@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Guessing Game</title>
+</head>
+<body>
+    <script>
+        function compareNumber(){
+            var random_number;
+            var input = document.getElementById("main-input").value;
+            document.getElementById("main-input").value = "";
+            input = parseInt(input, 10);
+            
+            if(!isNaN(input)){
+                console.log(`User entered ${input}`);
+
+                if(input > 10 || input < 1){
+                    console.log(`However, user's value ${input} is too large or small`);
+                    document.getElementById("main-display").innerHTML = `The value of ${input} isn't between 1-10 now is it.`;
+                    return;
+                }
+        
+            } else {
+                console.log("Their has been an issue with the value that the user has entered");
+                document.getElementById("main-display").innerHTML = `I don't understand what you just entered...`
+                return;
+            }
+
+            random_number = Math.floor(Math.random() * 10) + 1;
+
+            console.log(`Random number is ${random_number}`)
+
+            if(random_number === input){
+                document.getElementById("main-display").innerHTML = `Good Work`;
+            } else {
+                document.getElementById("main-display").innerHTML = `Not matched`;
+            }
+        }
+    </script>
+    <div class="main-content">
+        <h1 id="main-display">Guess a number between 1 to 10</h1>
+        <p>Enter a number here <input type="text" id="main-input" name="number-input"> then click <button onClick = compareNumber()>here</button></p> 
+    </div>
+    
+</body>
+</html>
